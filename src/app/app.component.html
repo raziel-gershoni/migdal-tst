@@ -1,0 +1,12 @@
+<div class='container'>
+  <select (change)="selectionChanged($event)">
+    <option *ngFor="let area of areas" [value]="area">{{area}}</option>
+  </select>
+  <input type="text" placeholder="הזן שם עיר" #cityInput />
+  <div *ngIf="garages.length === 0">Loading...</div>
+  <div *ngFor="let garage of garages">
+    <span>{{garage.Name}}</span>
+    <span>{{garage.Address}}</span>
+    <span>{{garage.City}}</span>
+  </div>
+</div>
