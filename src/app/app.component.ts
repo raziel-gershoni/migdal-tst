@@ -25,7 +25,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   getGarages(area: string, city: string) {
     this.garageService.getGarages(area, city).pipe(
       tap((items) => {
-        this.garages = items.Data?.GaragesList ?? [];
+        this.garages = items.Data?.GaragesList.sort((a, b) => {
+          if (a.Name > b.Name) {
+            return 1;
+          } else if (a.Name < b.Name) {
+            return -1;
+          } else {
+            return 0;
+          }
+        }) ?? [];
       })
     ).subscribe();
   }
